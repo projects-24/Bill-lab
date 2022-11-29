@@ -1,0 +1,100 @@
+{
+  "admin": {
+    "id": 1,
+    "user": "admin",
+    "password": "bill12345"
+  },
+  "users": [
+    {
+      "user": "abdulwahabiddris",
+      "password": "12345",
+      "date": "2022-11-29T14:26:16.378Z",
+      "id": 1
+    }
+  ],
+  "tests": [
+    {
+      "test": "Malaria Test",
+      "price": "200",
+      "date": "2022-11-29T16:06:34.965Z",
+      "id": 1
+    },
+    {
+      "test": "Birth test",
+      "price": "340",
+      "date": "2022-11-29T16:28:07.506Z",
+      "id": 3
+    }
+  ],
+  "sales": [],
+  "patients": [
+    {
+      "fullName": "Iddris Abdul Wahab",
+      "contact": "0552500930",
+      "nhis": "00900292",
+      "labNumber": "00992",
+      "price": 200,
+      "day": 29,
+      "month": 11,
+      "year": 2022,
+      "time": "16:15:25",
+      "identify": "055250093016:15:25",
+      "id": 4
+    },
+    {
+      "fullName": "Musah Iddris",
+      "contact": "0552500930",
+      "nhis": "00283",
+      "labNumber": "0012",
+      "price": 0,
+      "day": 29,
+      "month": 11,
+      "year": 2022,
+      "time": "22:19:17",
+      "identify": "055250093022:19:17",
+      "id": 5
+    },
+    {
+      "fullName": "Abdul Wahab",
+      "contact": "039393",
+      "nhis": "0033930",
+      "labNumber": "234",
+      "price": 340,
+      "day": 29,
+      "month": 11,
+      "year": 2022,
+      "time": "22:26:24",
+      "identify": "03939322:26:24",
+      "id": "03939322:26:24"
+    },
+    {
+      "fullName": "Iddris",
+      "contact": "030303043",
+      "nhis": "dassjkaf",
+      "labNumber": "4424",
+      "price": 200,
+      "day": 29,
+      "month": 11,
+      "year": 2022,
+      "time": "23:9:2",
+      "identify": "03030304323:9:2",
+      "id": "03030304323:9:2",
+      "attendant": "abdulwahabiddris"
+    },
+    {
+      "fullName": "Rashad",
+      "contact": "0099202",
+      "nhis": "0099333",
+      "labNumber": "00393",
+      "price": 200,
+      "day": 29,
+      "month": 11,
+      "year": 2022,
+      "time": "23:13:27",
+      "identify": "009920223:13:27",
+      "id": "009920223:13:27",
+      "attendant": "abdulwahabiddris",
+      "test": "Malaria Test"
+    }
+  ]
+}
