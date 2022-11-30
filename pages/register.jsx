@@ -97,7 +97,7 @@ return(
         }
         <div className="homeContainer">
             <div className="formContainer">
-            <div className="row container">
+            <div className="row ">
         <div className="col sm-12 md-4 lg-4 padding">
             <img src="/medicine.svg" className="fit" alt="" />
         </div>

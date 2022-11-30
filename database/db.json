@@ -10,6 +10,16 @@
       "password": "12345",
       "date": "2022-11-29T14:26:16.378Z",
       "id": 1
+    },
+    {
+      "user": "testuser2",
+      "password": "12345",
+      "id": 2
+    },
+    {
+      "user": "user2",
+      "password": "12345",
+      "id": 3
     }
   ],
   "tests": [
@@ -29,72 +39,79 @@
   "sales": [],
   "patients": [
     {
-      "fullName": "Iddris Abdul Wahab",
+      "fullName": "Abdul Razak",
       "contact": "0552500930",
-      "nhis": "00900292",
-      "labNumber": "00992",
-      "price": 200,
-      "day": 29,
-      "month": 11,
-      "year": 2022,
-      "time": "16:15:25",
-      "identify": "055250093016:15:25",
-      "id": 4
-    },
-    {
-      "fullName": "Musah Iddris",
-      "contact": "0552500930",
-      "nhis": "00283",
+      "nhis": "099330",
       "labNumber": "0012",
-      "price": 0,
-      "day": 29,
+      "price": 486,
+      "day": 30,
       "month": 11,
       "year": 2022,
-      "time": "22:19:17",
-      "identify": "055250093022:19:17",
-      "id": 5
+      "time": "0:21:57",
+      "identify": "05525009300:21:57",
+      "id": "05525009300:21:57",
+      "attendant": "admin",
+      "test": [
+        "Malaria Test",
+        "Birth test"
+      ],
+      "realPrice": 540
     },
     {
-      "fullName": "Abdul Wahab",
-      "contact": "039393",
-      "nhis": "0033930",
-      "labNumber": "234",
-      "price": 340,
-      "day": 29,
+      "fullName": "Musah Karim",
+      "contact": "05525394",
+      "nhis": "112243",
+      "labNumber": "11827373",
+      "price": 180,
+      "day": 30,
       "month": 11,
       "year": 2022,
-      "time": "22:26:24",
-      "identify": "03939322:26:24",
-      "id": "03939322:26:24"
+      "time": "1:47:6",
+      "identify": "055253941:47:6",
+      "id": "055253941:47:6",
+      "attendant": "admin",
+      "test": [
+        "Malaria Test"
+      ],
+      "realPrice": 200
     },
     {
-      "fullName": "Iddris",
-      "contact": "030303043",
-      "nhis": "dassjkaf",
-      "labNumber": "4424",
-      "price": 200,
-      "day": 29,
+      "fullName": "Salam Iddris",
+      "contact": "0992827",
+      "nhis": "NH-088272",
+      "labNumber": "09920293",
+      "price": 486,
+      "day": 30,
       "month": 11,
       "year": 2022,
-      "time": "23:9:2",
-      "identify": "03030304323:9:2",
-      "id": "03030304323:9:2",
-      "attendant": "abdulwahabiddris"
+      "time": "1:55:49",
+      "identify": "09928271:55:49",
+      "id": "09928271:55:49",
+      "attendant": "testuser",
+      "test": [
+        "Malaria Test",
+        "Birth test"
+      ],
+      "realPrice": 540
     },
     {
-      "fullName": "Rashad",
-      "contact": "0099202",
-      "nhis": "0099333",
-      "labNumber": "00393",
-      "price": 200,
-      "day": 29,
+      "fullName": "Salam Rashad",
+      "contact": "0552500930",
+      "nhis": "0029202",
+      "labNumber": "12",
+      "price": 486,
+      "day": 30,
       "month": 11,
       "year": 2022,
-      "time": "23:13:27",
-      "identify": "009920223:13:27",
-      "id": "009920223:13:27",
-      "attendant": "abdulwahabiddris",
-      "test": "Malaria Test"
+      "time": "2:48:7",
+      "identify": "05525009302:48:7",
+      "id": "05525009302:48:7",
+      "attendant": "testuser2",
+      "test": [
+        "Malaria Test",
+        "Birth test"
+      ],
+      "realPrice": 540
     }
   ]
 }

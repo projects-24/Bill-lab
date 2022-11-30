@@ -295,7 +295,7 @@ button{-webkit-appearance:button}link{text-decoration: none;}link:hover{text-dec
 /* tables */
 .table tr ,thead{border-bottom:1px solid #ddd}.table thead > td,th{font-weight:bold}
 .table{width: 100%;text-align: left;padding: 0;border-collapse: collapse;}.table.bordered{border: 1px solid #ddd;}
-.table.stripped tr:nth-child(even) {background-color: #E3E6E8;}.table tr,th,td{padding: 10px;margin: 0;}.table.hoverable > tr,th{transition: 0.3s;}.table.hoverable > tr:hover{background-color: #ddd;}
+.table tr,th,td{padding: 10px;margin: 0;}.table.hoverable > tr,th{transition: 0.3s;}.table.hoverable > tr:hover{background-color: #ddd;}
 .table.light{background-color: #f1f1f1;color: #000;}.table.dark{background-color: #000;color: #f1f1f1;}.table.dark tr:hover{background-color: #f1f1f1;color: black;}
 /*list*/
 .list{margin: 0;padding: 0;}.list li{list-style: none;padding: 5px;border-collapse: collapse;}.list.hover li:hover{background-color: #ddd;}

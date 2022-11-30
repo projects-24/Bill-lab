@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useEffect ,useState} from "react";
+import {useRouter} from "next/router"
 const Nav = () => {
   const [mode, setmode] = useState("")
   const [user, setuser] = useState(null)
+  const router = useRouter()
  const getMode = ()=>{
   const lMode  = JSON.parse(localStorage.getItem("mode"))
     if(lMode === "black"){
@@ -26,7 +28,7 @@ const Nav = () => {
         JSON.parse(localStorage.getItem("user"))
       )
       }else{
-        window.location.assign("/")
+        router.push("/")
       }
     }
   })
@@ -52,11 +54,13 @@ if(lMode === "black"){
 }
 
 const logOut = ()=>{
-  if(localStorage.getItem("mode")){
+  if(localStorage.getItem("user")){
     new Promise((resolve, reject) => {
       localStorage.removeItem("user")
       resolve()
-    }).then(()=>window.location.assign("/"))
+    }).then(()=>{
+      window.location.assign("/")
+    })
   }
 }
 
@@ -65,7 +69,7 @@ if(user){
     <div>
             <div className="navigationBar">
     <div>
-      <Link href="/" >
+      <Link href="/dashboard" >
      <span className="logo">
       Bill Lab
     </span>
@@ -93,7 +97,13 @@ if(user){
     <Link href="/register" className='navLink'>
     <i className="icon-user-following"></i> REGISTER PATIENT
     </Link>
-
+    {
+      !user.isAdmin ?
+      <Link href="/user" className='navLink'>
+      <i className="icon-user"></i> PROFILE
+      </Link>
+      :""  
+    }
     </div>
     <div>
       <div className="Avatar" onClick={handleMode}>

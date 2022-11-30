@@ -10,14 +10,14 @@ const Receipt = () => {
     const [nav, setnav] = useState(true)
     const router = useRouter()
     const {receipt} = router.query
-    const [product, setproduct] = useState(null)
+    const [patient, setpatient] = useState(null)
     useEffect(()=>{
-      Axios.get(endpoint + "/sales")
+      Axios.get(endpoint + "/patients")
       .then(docs=>{
         console.log(docs.data)
         docs.data.filter(doc=>{
-          if(doc.key === receipt){
-            setproduct(doc)
+          if(doc.id === receipt){
+            setpatient(doc)
           }
         })
       }).catch(err=>alert(err.message))
@@ -31,7 +31,7 @@ const Receipt = () => {
     }, 1000);
    }).then(()=>setnav(true))
     }
-    if(product){
+    if(patient){
     return ( 
         <div className="content">
          {
@@ -39,33 +39,50 @@ const Receipt = () => {
             <Nav />
             : ""
          }
-            <div className="receipt card" onClick={handlePrint}>
+            <div className="receipt" onClick={handlePrint}>
           <p className="row-flex space-between">
           <div className="h1">{logo}</div>
           <div class="text-bold">
-          {product.day} / {product.month} / {product.year}
+          {patient.day} / {patient.month} / {patient.year}
           </div>
           </p>
                 <p>
-                    <div className="h4">{product.customer}</div>
-                    <p className="text-bold">{product.contact}</p>
+                    <div className="h4">{patient.customer}</div>
+                    <p className="text-bold">{patient.contact}</p>
                 </p>
                 <p>
-                <table className="table text-center">
+                <table className="table margin-top-30 margin-bottom-30">
             <thead>
-              <th>Product</th>
+              <th>patient</th>
+              <th>Test</th>
               <th>Price</th>
+              <th>Attendant</th>
             </thead>
             <tbody>
                 <tr>
-                    <td>{product.product}</td>
-                    <td>{product.price}</td>
+                    <td>{patient.fullName}</td>
+                    <td>{patient.test.join(" , ") }</td>
+                    <td>{patient.price}</td>
+                    <td>{patient.attendant}</td>
                 </tr>
             </tbody>
           </table>
                 </p>
-                <p>
-                <div className="h4">Total: GHC {product.price}</div>
+                <p className="margin-top-40 row-flex space-between">
+                <div>
+                <div className="row-flex">
+                        <div className="margin-right-10 line-through text-bold">
+                            GHC {patient.realPrice}.00
+                        </div> 
+                        <div className="h4">GHC {patient.price}.00</div>
+                    </div>
+                </div>
+                <div>
+                <div className="signature">
+    {/* <img src="/img/signature.png" className="sigImage" alt="" /> */}
+</div>
+<div className="certNormal text-bold">Signature</div>
+</div>
                 </p>
             </div>
         </div>

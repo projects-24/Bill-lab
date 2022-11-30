@@ -13,6 +13,12 @@ const [openSnackbar, setopenSnackbar] = useState(false)
 const [message , setmessage] = useState("")
 const [Docs, setDocs] = useState("")
 const [selected, setselected] = useState("")
+const [selectItems, setselectItems] = useState([])
+const [allTest, setallTest] = useState([])
+const [prices, setprices] = useState([])
+const [price, setprice] = useState(0)
+const [filter, setfilter] = useState("")
+const [discountPrice, setdiscountPrice] = useState(0)
 
 useEffect(() => {
     setTimeout(()=>{
@@ -36,11 +42,13 @@ setmessage(err.message)
 
 const makeChanges = ()=>{
 if(selected){
-Axios.patch(endpoint + "/patients/" + test , {price:parseInt(selected.price) , test:selected.test})
+Axios.patch(endpoint + "/patients/" + test , 
+{realPrice :parseInt(price), price: parseInt(discountPrice), test:allTest}
+)
 .then(()=>{
 setmessage("Success")
 setopenSnackbar(true)
-window.location.assign("/register")
+window.location.assign("/receipt/" + test)
 })
 .catch(err=>alert(err.message))
 }else{
@@ -50,8 +58,38 @@ setopenSnackbar(true)
 }
 
 const handleTest = (e)=>{
+    setfilter(e.target.value)
 Axios.get(endpoint + "/tests/" + e.target.value)
-.then(doc=>setselected(doc.data))
+.then(doc=>{
+    new Promise((resolve, reject) => {
+        setselected(doc.data)
+    selectItems.push({price:doc.data.price , test:doc.data.test})
+    allTest.push(doc.data.test)
+    prices.push(parseInt(doc.data.price))
+     setprice(prices.reduce((a,b)=> a + b , 0))
+     resolve()
+    }).then(()=>{
+        setdiscountPrice((prices.reduce((a,b)=> a + b , 0) * 90) / 100)
+    })
+
+})
+
+}
+
+const Cancel = (doc)=>{
+    new Promise((resolve, reject) => {
+    setprice(price - parseInt(doc.price))
+        resolve()
+}).then(()=>setdiscountPrice((price * 90) / 100))
+}
+
+const reSelect = ()=>{
+    setselectItems([])
+    setallTest([])
+    setprice(0)
+    setprices([])
+    setdiscountPrice(0)
+    document.querySelector("#test").value = ""
 }
 return(
     <div className="">
@@ -81,21 +119,52 @@ return(
             </div>
             <div className="padding-top-20">
                 {
-                    <div className="h4">
-                        GHC {selected ? selected.price : ""}.00
+                    <div className="row-flex">
+                        <div className="margin-right-10 line-through text-bold">
+                            GHC {price}.00
+                        </div> 
+                        <div className="h4">GHC {discountPrice}.00</div>
                     </div>
                 }
+                {
+                    selectItems ?
+                <div className="section row">
+                {
+                    selectItems
+                    .map((doc)=>(
+                        <div className="tab">
+                        {doc.test}
+                         {/* <i className="icon-close" onClick={()=>Cancel(doc)}></i> */}
+                        </div>
+                    ))
+                }
+                </div>
+                :""
+                }
             <div className="section2">
-                <select className="input" id="user" type="text" placeholder="User Name" onChange={handleTest} >
+                <div className="row-flex">
+                    <div className="">
+                    <select className="input width-200-min" id="test" type="text" placeholder="User Name" onChange={handleTest} >
                     <option value="">SELECT TEST</option>
                     {
                         Docs ?
-                        Docs.map(doc=>(
+                        Docs.filter(filtdocs=>{
+                            if(filter === ""){
+                                return selectItems
+                            }else if(filter.toString().trim().toLowerCase() !== filtdocs.test.toString().trim()){
+                                return filtdocs
+                            }
+                        }).map(doc=>(
                             <option value={doc.id} key={doc.id} > {doc.test} </option>
                         ))
                         :""
                     }
-                </select>
+                </select>        
+                    </div>
+                    <div className="">
+                <button className="button info text-white" onClick={reSelect}> Reselect </button>
+                    </div>
+                </div>
             </div>
             <div>
             <button className="primaryBtn btn full-width" onClick={makeChanges}>

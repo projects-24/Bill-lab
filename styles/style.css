@@ -42,6 +42,7 @@ body,.modal-content{
 .row-flex{
     text-align: center;
 }
+.table.stripped tr:nth-child(even) {background-color: var(--light);}
 .input{
 padding: 1rem !important;
 border: none;
@@ -70,7 +71,7 @@ color: var(--color);
     font-weight:bold !important;
 }
 .primaryBtn{
-    background-color: var(--primaryColor);
+    background-color: var(--primaryColor) !important;
     color: white;
 }
 
@@ -214,6 +215,9 @@ align-items: center;
     border: 1px solid var(--light);
     padding: 1rem;
     border: 1px solid var(--primaryColor);
+    display:flex;
+    align-items:center;
+    min-height:150px;
 
 }
 .analyticsCard > .cardContent{
@@ -269,3 +273,18 @@ align-items: center;
   }
 
   
+  .tab{
+    border: 1px solid var(--light);
+    padding: .5rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+  .tab > i{margin-left: 5px;}
+  .signature{
+    padding:.5rem 0;
+    border-bottom: .2rem solid #EAF1FB;
+    width:100%;
+    margin:.2rem 0;
+    }

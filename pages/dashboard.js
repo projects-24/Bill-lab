@@ -140,6 +140,11 @@ const handlePrint = ()=>{
                   <th>Price</th>
                   <th>date</th>
                   <th>Attendant</th>
+                  {
+                    !print ?
+                    <th>Print Receipt</th>
+                    :""
+                  }
                 </thead>
                 <tbody>
                   {
@@ -147,10 +152,21 @@ const handlePrint = ()=>{
                       <tr key={docs.id}>
                         <td>{docs.fullName}</td>
                         <td>{docs.contact}</td>
-                        <td>{docs.test}</td>
+                        <td>{docs.test.join(" , ")}</td>
                         <td>{docs.price}</td>
                         <td>{docs.day} / {docs.month} / {docs.year}</td>
                         <td>{docs.attendant}</td>
+                      {
+                        !print ?
+                        <td>
+                        <Link href={`receipt/${docs.identify}`}>
+                        <button className="button text-white info">
+                       <i className="icon-printer" /> Print Receipt
+                         </button>
+                        </Link>
+                      </td>
+                      :""
+                      }
                       </tr>
                     ))
                   }
@@ -287,7 +303,7 @@ const handlePrint = ()=>{
         <div className="col sm-12 md-6 lg-6 padding">
         <div className='analyticsCard cards'>
          <div className="cardContent">
-         <div className="text-bold">Amount Gotten</div>
+         <div className="text-bold">Amount</div>
             <div className="">
             <div className='h4'><span>GHC</span> {currentPrice}</div>
             {/* <div className="text-small padding-left-10">
